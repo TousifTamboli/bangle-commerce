@@ -14,7 +14,6 @@ const Orders = ({ token }) => {
     }
 
     try {
-
       const response = await axios.post(
         backendUrl + "api/order/list",
         {},
@@ -72,7 +71,7 @@ const Orders = ({ token }) => {
           >
             <div className="flex items-center space-x-4">
               <img
-                src={assets.parcel_icon}
+                src={order.items[0]?.image || "https://via.placeholder.com/150"}
                 alt="Parcel Icon"
                 className="w-12 h-12"
               />
