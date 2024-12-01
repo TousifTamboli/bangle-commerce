@@ -32,6 +32,7 @@ const Login = () => {
         setToken(token);
         localStorage.setItem("token", token);
         toast.success("Successfully logged in!");
+        toast.success("Read all the Privacy Policy Details First");
       } else {
         toast.error(response.data.message);
       }

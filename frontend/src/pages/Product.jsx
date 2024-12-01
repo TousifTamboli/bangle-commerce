@@ -83,7 +83,8 @@ const Product = () => {
           <hr className="mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% Original Product</p>
-            <p>Easy return</p>
+            <p>Non Refundable</p>
+            <p>We Do Not take responsibility on Glass Bangle's Damages</p>
           </div>
         </div>
       </div>
@@ -95,8 +96,7 @@ const Product = () => {
                 <p className="border px-5 py-3 text-sm">Reviews (122)</p>
               </div>
               <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-600">
-                <p>Dummy Text</p>
-                <p>Dummy Text</p>
+                <p>{productData.description}</p>
               </div>
     </div>
 
