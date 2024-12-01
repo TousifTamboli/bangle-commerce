@@ -121,9 +121,9 @@ const Add = ({ token }) => {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
-            <option value="Men">Men</option>
-            <option value="Women">Women</option>
-            <option value="Kids">Kids</option>
+            <option value="Glass">Glass</option>
+            <option value="Metal">Metal</option>
+            <option value="Bentex">Bentex</option>
           </select>
         </div>
 
@@ -133,9 +133,9 @@ const Add = ({ token }) => {
             onChange={(e) => setSubCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
-            <option value="Topwear">Topwear</option>
-            <option value="Bottomwear">Bottomwear</option>
-            <option value="Winterwear">Winterwear</option>
+            <option value="Fancy">Fancy</option>
+            <option value="Sets">Sets</option>
+            <option value="Kada">Kada</option>
           </select>
         </div>
 
@@ -155,7 +155,7 @@ const Add = ({ token }) => {
       <div>
         <p className="mb-2">Product Sizes</p>
         <div className="flex gap-3">
-          {["S", "M", "L", "XL", "XXL"].map((size) => (
+          {["2-2", "2-4", "2-6", "2-8", "2-10"].map((size) => (
             <div
               key={size}
               onClick={() =>
