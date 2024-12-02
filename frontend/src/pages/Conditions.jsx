@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react'
 import Title from "../components/Title";
 
-const Terms = () => {
+
+const Conditions = () => {
   return (
     <div>
+      <div>
       <div className="text-center text-2xl pt-10 border-t">
         <Title text1={"TERMS AND"} text2={"CONDITIONS"} />
       </div>
@@ -68,7 +70,8 @@ const Terms = () => {
         </button>
       </div>
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default Terms;
+export default Conditions

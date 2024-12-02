@@ -16,8 +16,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Verify from "./pages/Verify";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Terms from "./pages/terms";
 import Refund from "./pages/Refund";
+import Conditions from "./pages/Conditions";
 import Shipping from "./pages/Shipping";
 
 const App = () => {
@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/verify" element={<Verify />} />
-        <Route path="/terms" element={<Terms />} />
+        <Route path="/conditions" element={<Conditions />} />
         <Route path="/refund" element={<Refund />} />
         <Route path="/shipping" element={<Shipping />} />
       </Routes>

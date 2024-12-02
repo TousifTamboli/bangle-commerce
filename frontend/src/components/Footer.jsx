@@ -29,7 +29,7 @@ const Footer = () => {
               <Link to="/privacypolicy">Privacy Policy</Link>
             </li> */}
             <li>
-              <Link to="/terms">Terms and Conditions</Link>
+              <Link to="/conditions">Terms and Conditions</Link>
             </li>
             <li>
               <Link to="/refund">Cancellation/Refund Policy</Link>
