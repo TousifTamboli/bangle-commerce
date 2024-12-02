@@ -37,18 +37,22 @@ const Navbar = () => {
           <p>Collection</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        {/* <NavLink to="/about" className="flex flex-col items-center gap-1">
-          <p>About</p>
+        <NavLink to="/contact" className="flex flex-col items-center gap-1">
+          <p>About Us</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </NavLink>
+        {/* <NavLink to="/terms" className="flex flex-col items-center gap-1">
+          <p>Terms And Conditions</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </NavLink>
+        <NavLink to="/refund" className="flex flex-col items-center gap-1">
+          <p>Cancellation/Refund Policy</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </NavLink>
+        <NavLink to="/shipping" className="flex flex-col items-center gap-1">
+          <p>Shipping & Delivery</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink> */}
-        <NavLink to="/contact" className="flex flex-col items-center gap-1">
-          <p>Contact</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
-        <NavLink to="/privacypolicy" className="flex flex-col items-center gap-1">
-          <p>Privacy Policy</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
       </ul>
 
       <div className="flex items-center gap-6">
