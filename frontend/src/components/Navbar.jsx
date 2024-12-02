@@ -41,11 +41,11 @@ const Navbar = () => {
           <p>About Us</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        {/* <NavLink to="/terms" className="flex flex-col items-center gap-1">
-          <p>Terms And Conditions</p>
+        <NavLink to="/privacypolicy" className="flex flex-col items-center gap-1">
+          <p>Privacy and Policy</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        <NavLink to="/refund" className="flex flex-col items-center gap-1">
+        {/* <NavLink to="/refund" className="flex flex-col items-center gap-1">
           <p>Cancellation/Refund Policy</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
