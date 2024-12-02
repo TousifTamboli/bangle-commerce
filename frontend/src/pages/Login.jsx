@@ -66,7 +66,7 @@ const Login = () => {
       <input onChange={(e)=> setPassword(e.target.value)} value={password} className="w-full py-2 px-3 border border-gray-800" placeholder="Password" type="password" required/>
 
       <div className="w-full flex justify-between text-sm mt-[-8px]">
-        <p className="cursor-pointer">Forgot Password</p>{
+        {
           currentState === "Login"
           ? <p onClick={() =>setCurrentState('Signup')} className="cursor-pointer">Create Account</p>
           : <p onClick={() =>setCurrentState("Login")} className="cursor-pointer">Login Here</p>

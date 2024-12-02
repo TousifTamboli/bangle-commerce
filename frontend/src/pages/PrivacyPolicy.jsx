@@ -75,9 +75,9 @@ const PrivacyPolicy = () => {
           </p>
         </div>
 
-        <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500 mt-6">
+        {/* <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500 mt-6">
           Learn More
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -16,7 +16,6 @@ const Contact = () => {
           <p className='text-gray-500'>Tel: +91 - 7666839558 <br />Email: tousiftamboli3@gmail.com</p>
           <p className='font-semibold text-xl text-gray-600'>Carrers at Forever</p>
           <p className='text-gray-500'>Learn More About us</p>
-          <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore More</button>
 
   
         </div>
