@@ -85,6 +85,8 @@ const Product = () => {
             <p>100% Original Product</p>
             <p>Non Refundable</p>
             <p>We Do Not take responsibility on Glass Bangle's Damages</p>
+            <p>For Now we only deliver in Areas of Chandan-nagar, Anand Park, Wadgaon Sheri, Viman Nagar, Kharadi, Kalyani Nagar.
+            If you enter Address apart from this you will be notifed.</p>
           </div>
         </div>
       </div>
