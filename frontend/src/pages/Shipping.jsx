@@ -31,6 +31,14 @@ const Shipping = () => {
             unforeseen circumstances such as natural calamities or logistical
             delays.
           </p>
+          
+          <h2 className="font-semibold text-xl text-gray-700 mt-6 mb-4">
+            Delivery Area
+          </h2>
+          <p className="text-lg">
+            For Now we only deliver in Areas of Chandan-nagar, Anand Park, Wadgaon Sheri, Viman Nagar, Kharadi, Kalyani Nagar.
+            If you enter Address apart from this you will be notifed.
+          </p>
 
           <h2 className="font-semibold text-xl text-gray-700 mt-6 mb-4">
             Best Condition Guarantee
