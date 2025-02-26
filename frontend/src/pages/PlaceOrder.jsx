@@ -111,6 +111,8 @@ const PlaceOrder = () => {
             const responseRazorpay = await axios.post(backendUrl + 'api/order/razorpay', orderData, {headers:{token}})
             if (responseRazorpay.data.success) {
               initPay(responseRazorpay.data.order)
+            } else {
+              toast.error(responseRazorpay.data.message)
             }
 
           break
