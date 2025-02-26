@@ -11,8 +11,7 @@ const ProductItem = ({ id, image, name, price }) => {
       to={`/product/${id}`}
     >
       <div className="border rounded-lg p-2 hover:shadow-md transition">
-        <div className="overflow-hidden border-2 border-black-100 ">
-        <h1>hello</h1>
+        <div className="overflow-hidden">
           <img
             className="hover:scale-110 transition ease-in-out"
             src={image[0]}
