@@ -44,6 +44,7 @@ const App = () => {
         <Route path="/refund" element={<Refund />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        {/* <Route path="/resetpassword/:token" element={<ResetPassword />} /> */}
       </Routes>
       <Footer />
     </div>

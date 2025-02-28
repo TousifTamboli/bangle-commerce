@@ -33,6 +33,16 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    res.json({ success: true, message: "Password reset email sent!" });
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
+
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
