@@ -19,6 +19,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Refund from "./pages/Refund";
 import Conditions from "./pages/Conditions";
 import Shipping from "./pages/Shipping";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/conditions" element={<Conditions />} />
         <Route path="/refund" element={<Refund />} />
         <Route path="/shipping" element={<Shipping />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
       <Footer />
     </div>

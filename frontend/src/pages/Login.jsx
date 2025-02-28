@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Link, NavLink } from "react-router-dom";
+
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Signup");
@@ -67,6 +69,10 @@ const Login = () => {
       <input onChange={(e)=> setPassword(e.target.value)} value={password} className="w-full py-2 px-3 border border-gray-800" placeholder="Password" type="password" required/>
 
       <div className="w-full flex justify-between text-sm mt-[-8px]">
+        {
+          <p onClick={() =>navigate("/forgotpassword")} className="cursor-pointer">Forgot password</p>
+          //onClick={() => (token ? null : navigate("/login"))}
+        }
         {
           currentState === "Login"
           ? <p onClick={() =>setCurrentState('Signup')} className="cursor-pointer">Create Account</p>
