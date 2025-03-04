@@ -20,6 +20,8 @@ import Refund from "./pages/Refund";
 import Conditions from "./pages/Conditions";
 import Shipping from "./pages/Shipping";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyOtp from "./pages/VerifyOtp";
 
 const App = () => {
   return (
@@ -44,6 +46,8 @@ const App = () => {
         <Route path="/refund" element={<Refund />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/verifyotp" element={<VerifyOtp />} />
       </Routes>
       <Footer />
     </div>

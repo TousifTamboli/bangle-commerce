@@ -12,7 +12,7 @@ const ResetPassword = () => {
   const handleResetPassword = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${backendUrl}api/user/reset-password`, { token, password });
+      const response = await axios.post(`${backendUrl}api/user/resetPassword`, { token, password });
       if (response.data.success) {
         toast.success("Password updated successfully.");
         navigate("/login");

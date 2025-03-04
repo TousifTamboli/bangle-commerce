@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
@@ -10,9 +10,10 @@ const ForgotPassword = () => {
   const handleForgotPassword = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${backendUrl}api/user/forgot-password`, { email });
+      const response = await axios.post(`${backendUrl}api/user/forgotPassword`, { email });
       if (response.data.success) {
-        toast.success("Reset link sent to your email.");
+        toast.success("OTP Send to your email");
+        navigate('/verifyotp');
       } else {
         toast.error(response.data.message);
       }
@@ -20,6 +21,7 @@ const ForgotPassword = () => {
       toast.error("Error sending reset link.");
     }
   };
+
 
   return (
     <form onSubmit={handleForgotPassword} className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800">

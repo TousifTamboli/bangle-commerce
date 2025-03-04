@@ -110,7 +110,10 @@ export const sendOTP = async (req, res) => {
     // Save OTP to the user document
     user.otp = otp;
     user.otpExpires = Date.now() + 300000; // OTP expires in 5 minutes
-    await user.save();
+
+    console.log("User before save:", user);
+    await user.save(); // Ensure this is awaited
+    console.log("User after save:", user);
 
     // Send OTP via email
     await sendOTPEmail(email, otp);
@@ -123,7 +126,7 @@ export const sendOTP = async (req, res) => {
 };
 
 
-export const verifyOTP = async (req, res) => {
+export const verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
 
@@ -133,8 +136,21 @@ export const verifyOTP = async (req, res) => {
 
     const user = await userModel.findOne({ email });
 
-    if (!user || user.otp !== otp || user.otpExpires < Date.now()) {
-      return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    console.log("Current time:", Date.now());
+    console.log("OTP expiration time:", user.otpExpires);
+    console.log("Stored OTP:", user.otp);
+    console.log("Entered OTP:", otp);
+
+    if (user.otp !== otp.trim()) {
+      return res.status(400).json({ success: false, message: "Invalid OTP" });
+    }
+
+    if (user.otpExpires < Date.now()) {
+      return res.status(400).json({ success: false, message: "OTP has expired" });
     }
 
     // Clear OTP after successful verification
@@ -144,7 +160,7 @@ export const verifyOTP = async (req, res) => {
 
     res.status(200).json({ success: true, message: "OTP verified successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Verify OTP error:", error);
     res.status(500).json({ success: false, message: "Error verifying OTP" });
   }
 };
