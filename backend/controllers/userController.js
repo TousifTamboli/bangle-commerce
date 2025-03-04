@@ -2,6 +2,8 @@ import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import userModel from "../models/userModel.js";
+import { sendOTPEmail } from "../utils/emailService.js";
+
 
 const createToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
@@ -33,15 +35,6 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const forgotPassword = async (req, res) => {
-  try {
-    const { email } = req.body;
-    res.json({ success: true, message: "Password reset email sent!" });
-  } catch (error) {
-    console.log(error)
-    
-  }
-}
 
 export const registerUser = async (req, res) => {
   try {
@@ -92,5 +85,66 @@ export const adminLogin = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Server error. Please try again later." });
+  }
+};
+
+
+
+export const sendOTP = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: "Email is required" });
+    }
+
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // Generate a 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Save OTP to the user document
+    user.otp = otp;
+    user.otpExpires = Date.now() + 300000; // OTP expires in 5 minutes
+    await user.save();
+
+    // Send OTP via email
+    await sendOTPEmail(email, otp);
+
+    res.status(200).json({ success: true, message: "OTP sent to your email" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Error sending OTP" });
+  }
+};
+
+
+export const verifyOTP = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    if (!email || !otp) {
+      return res.status(400).json({ success: false, message: "Email and OTP are required" });
+    }
+
+    const user = await userModel.findOne({ email });
+
+    if (!user || user.otp !== otp || user.otpExpires < Date.now()) {
+      return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
+    }
+
+    // Clear OTP after successful verification
+    user.otp = undefined;
+    user.otpExpires = undefined;
+    await user.save();
+
+    res.status(200).json({ success: true, message: "OTP verified successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Error verifying OTP" });
   }
 };
