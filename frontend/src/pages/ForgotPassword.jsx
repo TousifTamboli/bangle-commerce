@@ -34,7 +34,7 @@ const ForgotPassword = () => {
         placeholder="Enter your email" 
         required 
       />
-      <button className="bg-black text-white font-light px-8 py-2 mt-4">Send Reset Link</button>
+      <button className="bg-black text-white font-light px-8 py-2 mt-4">Send Otp</button>
     </form>
   );
 };

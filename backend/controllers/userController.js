@@ -180,7 +180,7 @@ export const resetPassword = async (req, res) => {
     // Hash the new password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Update user's password and clear OTP fields
+    // Update user password and clear OTP fields
     user.password = hashedPassword;
     user.otp = undefined;
     user.otpExpires = undefined;
