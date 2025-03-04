@@ -13,6 +13,7 @@ const VerifyOtp = () => {
     try {
       const response = await axios.post(`${backendUrl}api/user/verify-otp`, { email, otp });
       if (response.data.success) {
+        localStorage.setItem("email", email);
         toast.success("OTP verified successfully");
         navigate("/resetpassword");
       } else {
