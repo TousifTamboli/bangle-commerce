@@ -2,6 +2,8 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
 import razorpay from "razorpay";
+import mongoose from 'mongoose'; // Use import instead of require
+
 
 // global variables
 const currency = "inr";
@@ -207,6 +209,33 @@ const updateStatus = async (req, res) => {
   }
 };
 
+
+const deleteOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+
+    if (!orderId) {
+      return res.status(400).json({ success: false, message: "Order ID is required" });
+    }
+
+    // Cast to ObjectId for value "{ orderId: '67c85bb1ffa149cd75c7f23d' }" (type Object) at path "_id" for model "order"
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({ success: false, message: "Invalid Order ID" });
+    }
+
+    const deletedOrder = await orderModel.findByIdAndDelete(orderId);
+
+    if (!deletedOrder) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Order deleted successfully", data: deletedOrder });
+  } catch (error) {
+    console.error("Error deleting order:", error); // Log the error
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export {
   verifyRazorpay,
   verifyStripe,
@@ -216,4 +245,5 @@ export {
   allOrders,
   userOrders,
   updateStatus,
+  deleteOrder
 };

@@ -55,6 +55,33 @@ const Orders = ({ token }) => {
     }
   };
 
+  //delete order from database after dilevery
+  const deleteHandler = async (orderId) => {
+    try {
+      const response = await axios.post(
+        `${backendUrl}api/order/deleteorder`,
+        { orderId },
+        { headers: { token } } // Add token in headers
+      );
+  
+      if (response.data.success) {
+        toast.success("Order deleted successfully");
+        await fetchAllOrders(); // Refresh orders after deletion
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      toast.error(
+        error.response
+          ? error.response.data.message
+          : "Failed to delete order"
+      );
+    }
+  };
+  
+
+
   // Fetch orders when token changes
   useEffect(() => {
     fetchAllOrders();
@@ -133,10 +160,10 @@ const Orders = ({ token }) => {
                 <option value="Delivered">Delivered</option>
               </select>
               <button
-                onClick={() => statusHandler(event, order._id)}
+                onClick={() => deleteHandler(order._id)}
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
               >
-                Update Status
+                Delete Order
               </button>
             </div>
           </div>
