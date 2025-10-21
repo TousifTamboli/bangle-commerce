@@ -48,12 +48,7 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid email format" });
     }
 
-    if (!validator.isStrongPassword(password)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must include at least one uppercase letter, one number, and one special character.",
-      });
-    }
+
 
     const exists = await userModel.findOne({ email });
 
