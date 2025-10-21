@@ -17,26 +17,7 @@ connecCloudinary();
 //middlewares
 app.use(express.json());
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-
-    const allowedOrigins = [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      process.env.FRONTEND_URL,
-      process.env.ADMIN_URL
-    ].filter(Boolean);
-
-    // Allow any Vercel deployment URL for this project
-    const isVercelDeployment = origin.includes('bangle-commerce') && origin.includes('vercel.app');
-
-    if (allowedOrigins.includes(origin) || isVercelDeployment) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true, // Allow all origins for now
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'token']
@@ -51,6 +32,28 @@ app.use("/api/order", orderRouter)
 
 app.get("/", (req, res) => {
   res.send("API WORKING");
+});
+
+app.get("/health", (req, res) => {
+  res.json({
+    success: true,
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
+    env: {
+      nodeEnv: process.env.NODE_ENV,
+      mongoConnected: !!process.env.MONGODB_URI
+    }
+  });
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+  });
 });
 
 app.listen(port, () => console.log("Server Started on port: " + port));
