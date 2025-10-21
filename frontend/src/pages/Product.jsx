@@ -77,7 +77,7 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={() =>addToCart(productData._id,size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+          <button onClick={() => addToCart(productData._id, size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
             ADD TO CART
           </button>
           <hr className="mt-8 sm:w-4/5" />
@@ -87,25 +87,25 @@ const Product = () => {
             <p>We Do Not take responsibility on Bangle's Damages as we provide you dilevery doorstep.</p>
             <p>Product may differ from the photo</p>
             <p>For Now we only deliver in Areas of Chandan-nagar, Anand Park, Wadgaon Sheri, Viman Nagar, Kharadi, Kalyani Nagar.
-            If you enter Address apart from this you will be not notifed.</p>
+              If you enter Address apart from this you will be not notifed.</p>
           </div>
         </div>
       </div>
-    
-    {/* description amd review section */}
-    <div className="mt-20">
-              <div className="flex">
-                <b className="border px-5 py-3 text-sm">Description</b>
-                <p className="border px-5 py-3 text-sm">Reviews (122)</p>
-              </div>
-              <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-600">
-                <p>{productData.description}</p>
-              </div>
-    </div>
 
-    {/* display related products */}
-    <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
-    
+      {/* description amd review section */}
+      <div className="mt-20">
+        <div className="flex">
+          <b className="border px-5 py-3 text-sm">Description</b>
+          <p className="border px-5 py-3 text-sm">Reviews (122)</p>
+        </div>
+        <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-600">
+          <p>{productData.description}</p>
+        </div>
+      </div>
+
+      {/* display related products */}
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+
     </div>
 
 
